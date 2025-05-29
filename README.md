@@ -19,6 +19,7 @@
 `terraform init` <br>
 `terraform plan -var-file="ndev.tfvars" ` <br>
 `terraform apply -var-file="ndev.tfvars"` <br>
+
 Input `true` or `false` for creation of Nat Gateway resource <br>
 
 ... <br>
