@@ -60,3 +60,12 @@ variable "database_subnet_cidrs" {
  type        = list(string)
  description = "Database Subnet CIDR values"
 }
+
+################################################################################
+# NAT Gateway
+################################################################################
+
+variable "create_natgw" {
+  description = "Whether to create NAT Gateway"
+  type        = bool
+}

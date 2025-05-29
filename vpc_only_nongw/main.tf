@@ -89,6 +89,28 @@ resource "aws_internet_gateway" "my_igw" {
   }
 }
 
+#Only create the NAT gateway if the variable is set to true
+resource "aws_eip" "natgw" {
+  count = var.create_natgw ? 1 : 0
+  domain = "vpc"
+
+  tags = {
+    Name = "${local.name_prefix}-eip"
+  }
+}
+
+resource "aws_nat_gateway" "natgw" {
+  count         = var.create_natgw ? 1 : 0
+  allocation_id = aws_eip.natgw[0].id
+  subnet_id     = values(aws_subnet.public_subnets)[0].id
+
+  tags = {
+    Name = "${local.name_prefix}-natgw"
+  }
+
+  depends_on = [aws_internet_gateway.my_igw]
+}
+
 #Create public route
 resource "aws_route_table" "public_rt" {
   vpc_id = aws_vpc.my_vpc.id
@@ -115,7 +137,13 @@ resource "aws_route_table_association" "public_subnet_asso" {
 resource "aws_route_table" "private_rt" {
   vpc_id = aws_vpc.my_vpc.id
  
-  # No routes defined - this will only allow internal VPC communication
+  dynamic "route" {
+    for_each = var.create_natgw ? [1] : []
+    content {
+      cidr_block     = "0.0.0.0/0"
+      nat_gateway_id = aws_nat_gateway.natgw[0].id
+    }
+  }
  
   tags = {
     Name = "${local.name_prefix}-Private-Route-Table"
