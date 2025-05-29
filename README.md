@@ -1,4 +1,4 @@
-# Sample and basic Modular AWS resource provionsioning with terraform
+# Sample on-demand AWS resource provionsioning with terraform
 
 ## 📌 Get Started
 
@@ -11,16 +11,10 @@
 > [!NOTE]
 > Variables are defined in ndev.tfvars, for future flexibility to invoke another environment with different value such as for QA, Prod in another .tfvars file.
 
-## :running: Running the code locally
-
-`terraform init` <br>
-`terraform plan -var-file="ndev.tfvars" ` <br>
-`terraform apply -var-file="ndev.tfvars"` <br>
-`terraform destroy -var-file="dev.tfvars" `<br>
-
-## :sunglasses: Creation of Resources
+## :sunglasses: Creation of Resources :running:
 
 **_Step 1 - VPC only_** <br>
+
 `cd vpc_only_nongw` <br>
 `terraform init` <br>
 `terraform plan -var-file="ndev.tfvars" ` <br>
