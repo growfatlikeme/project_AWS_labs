@@ -13,17 +13,19 @@
 
 ## :sunglasses: Creation of Resources :running:
 
-###**_Step 1 - VPC only_**###
+**_Step 1 - VPC only_**
 
 `cd vpc_only_nongw` <br>
 `terraform init` <br>
 `terraform plan -var-file="ndev.tfvars" ` <br>
 `terraform apply -var-file="ndev.tfvars"` <br>
 Input `true` or `false` for creation of Nat Gateway resource <br>
+
 ... <br>
+
 `terraform destroy -var-file="ndev.tfvars" `<br>
 
-###**_Step 2 - VPC + Jumphost only_**###
+**_Step 2 - VPC + Jumphost only_**
 
 Do step 1. <br>
 
@@ -31,8 +33,12 @@ Do step 1. <br>
 `terraform init` <br>
 `terraform plan -var-file="ndev.tfvars" ` <br>
 `terraform apply -var-file="ndev.tfvars"` <br>
+
 ... <br>
+
 `terraform destroy -var-file="ndev.tfvars" `<br>
+
 Input `false` for creation of Nat Gateway resource <br>
+
 `cd ../vpc_only_nongw` <br>
 `terraform destroy -var-file="ndev.tfvars" `<br>
