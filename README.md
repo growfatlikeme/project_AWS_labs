@@ -13,7 +13,7 @@
 
 ## :sunglasses: Creation of Resources :running:
 
-**_Step 1 - VPC only_**
+### **_VPC only_**
 
 `cd vpc_only_nongw` <br>
 `terraform init` <br>
@@ -26,7 +26,7 @@ Input `true` or `false` for creation of Nat Gateway resource <br>
 
 `terraform destroy -var-file="ndev.tfvars" `<br>
 
-**_Step 2 - VPC + Jumphost only_**
+### **_VPC + Jumphost only_**
 
 Do step 1. <br>
 
@@ -44,16 +44,14 @@ Input `false` for creation of Nat Gateway resource <br>
 `cd ../vpc_only_nongw` <br>
 `terraform destroy -var-file="ndev.tfvars" `<br>
 
-**_S3 bucket site hosting with cloudfront and WAF_**
+### **_S3 bucket site hosting with cloudfront and WAF_**
 
 `cd ../s3_hosting_cloudfront` <br>
 `terraform init` <br>
 `terraform plan -var-file="ndev.tfvars" ` <br>
 `terraform apply -var-file="ndev.tfvars"` <br>
 
-**_AWS SNS Topic_**
-
-Do step 1. <br>
+### **_AWS SNS Topic_**
 
 `cd ../sns_topic` <br>
 `terraform init` <br>
