@@ -43,3 +43,19 @@ Input `false` for creation of Nat Gateway resource <br>
 
 `cd ../vpc_only_nongw` <br>
 `terraform destroy -var-file="ndev.tfvars" `<br>
+
+**_S3 bucket site hosting with cloudfront and WAF_**
+
+`cd ../s3_hosting_cloudfront` <br>
+`terraform init` <br>
+`terraform plan -var-file="ndev.tfvars" ` <br>
+`terraform apply -var-file="ndev.tfvars"` <br>
+
+**_AWS SNS Topic_**
+
+Do step 1. <br>
+
+`cd ../sns_topic` <br>
+`terraform init` <br>
+`terraform plan -var-file="ndev.tfvars" ` <br>
+`terraform apply -var-file="ndev.tfvars"` <br>

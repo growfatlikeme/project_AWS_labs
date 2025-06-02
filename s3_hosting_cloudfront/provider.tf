@@ -1,7 +1,7 @@
 # The default provider configuration
 provider "aws" {
-  region = "ap-southeast-1"        # Dynamically fetch the region from variable
-  alias = "ap-southeast-1" # Alias for the provider to use in the module
+  region = var.aws_region       # Dynamically fetch the region from variable
+  alias = "ap_southeast_1" # Alias for the provider to use in the module
 
 default_tags {
   tags = {
@@ -16,7 +16,7 @@ default_tags {
 #Additional provider configuration for cloudfront 
 provider "aws" {
   region = "us-east-1"
-  alias = "us-east-1" # Alias for the provider to use in the module
+  alias = "us_east_1" # Alias for the provider to use in the module
   
   default_tags {
   tags = {
