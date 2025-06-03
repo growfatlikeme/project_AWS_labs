@@ -13,7 +13,7 @@
 
 ## :sunglasses: Creation of Resources :running:
 
-### **_VPC only (Step 1)_**
+### **_VPC only (VPC 1)_**
 
 `cd vpc_only_nongw` <br>
 `terraform init` <br>
@@ -26,9 +26,22 @@ Input `true` or `false` for creation of Nat Gateway resource <br>
 
 `terraform destroy -var-file="ndev.tfvars" `<br>
 
+### **_VPC only (VPC 2)_**
+
+`cd vpc_only_nongw_2` <br>
+`terraform init` <br>
+`terraform plan -var-file="ndev.tfvars" ` <br>
+`terraform apply -var-file="ndev.tfvars"` <br>
+
+Input `true` or `false` for creation of Nat Gateway resource <br>
+
+... <br>
+
+`terraform destroy -var-file="ndev.tfvars" `<br>
+
 ### **_VPC + Jumphost only_**
 
-Do step 1. <br>
+Run VPC 1. <br>
 
 `cd ../ec2_bastion_withVPC` <br>
 `terraform init` <br>
@@ -39,10 +52,10 @@ Do step 1. <br>
 
 `terraform destroy -var-file="ndev.tfvars" `<br>
 
-Input `false` for creation of Nat Gateway resource <br>
-
 `cd ../vpc_only_nongw` <br>
 `terraform destroy -var-file="ndev.tfvars" `<br>
+
+Input `false` for creation of Nat Gateway resource <br>
 
 ### **_S3 bucket site hosting with cloudfront and WAF_**
 
@@ -70,7 +83,7 @@ Input `false` for creation of Nat Gateway resource <br>
 
 ### **_MySQL accessible from private subnet only_**
 
-Do step 1. <br>
+Run VPC 1. <br>
 
 `cd ../mySQL` <br>
 `terraform init` <br>
@@ -80,9 +93,31 @@ Do step 1. <br>
 
 ... <br>
 
+`cd ../vpc_only_nongw` <br>
+`terraform destroy -var-file="ndev.tfvars" `<br>
+
+Input `false` for creation of Nat Gateway resource <br>
+
+### **_VPC Peering_**
+
+Run VPC 1. <br>
+
+Run VPC 2. <br>
+
+`cd ../vpc_peering` <br>
+`terraform init` <br>
+`terraform plan -var-file="ndev.tfvars" ` <br>
+`terraform apply -var-file="ndev.tfvars"` <br>
+`terraform destroy -var-file="ndev.tfvars" `<br>
+
+... <br>
+
+`cd ../vpc_only_nongw_2` <br>
 `terraform destroy -var-file="ndev.tfvars" `<br>
 
 Input `false` for creation of Nat Gateway resource <br>
 
 `cd ../vpc_only_nongw` <br>
 `terraform destroy -var-file="ndev.tfvars" `<br>
+
+Input `false` for creation of Nat Gateway resource <br>

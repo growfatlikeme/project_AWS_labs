@@ -1,6 +1,6 @@
 # Create security group for bastion host
 resource "aws_security_group" "bastion_sg" {
-  name        = "${local.name_prefix}-bastion-sg"
+  name        = "${local.name_prefix}-bastion-sg_vpc2"
   description = "Security group for bastion host"
   vpc_id      = data.terraform_remote_state.vpc.outputs.vpc_id
 
@@ -11,7 +11,7 @@ resource "aws_security_group" "bastion_sg" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
+  
   ingress {
    description = "Allow HTTP from anywhere"
    from_port        = 80

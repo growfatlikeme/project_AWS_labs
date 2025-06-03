@@ -9,14 +9,14 @@ resource "aws_instance" "bastion" {
   
   key_name               = aws_key_pair.bastion_key.key_name
 
-   user_data = base64encode(templatefile("init-script.tpl", {
+  user_data = base64encode(templatefile("init-script.tpl", {
     name_prefix = local.name_prefix
   }))
-    
+
   user_data_replace_on_change = true # this forces instance to be recreated upon update of user data contents
 
   tags = {
-    Name = "${local.name_prefix}-bastion"
+    Name = "${local.name_prefix}-bastion_vpc2"
   }
 
   lifecycle {
