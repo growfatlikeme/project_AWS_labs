@@ -57,3 +57,10 @@ Input `false` for creation of Nat Gateway resource <br>
 `terraform init` <br>
 `terraform plan -var-file="ndev.tfvars" ` <br>
 `terraform apply -var-file="ndev.tfvars"` <br>
+
+### **_DynamoDB table with sample data_**
+
+`cd ../dynamodb` <br>
+`terraform init` <br>
+`terraform plan -var-file="ndev.tfvars" ` <br>
+`terraform apply -var-file="ndev.tfvars"` <br>

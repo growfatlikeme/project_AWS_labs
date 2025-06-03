@@ -1,3 +1,5 @@
+#variables specific to network module depending on tfvars invoked, may override
+
 variable "name" {
   type = string
   description = "Ownership of resources"
@@ -8,12 +10,7 @@ variable "environment" {
   description = "Environment type (dev, staging, prod)"
 }
 
-variable "cart_count" {
- type    = number
- default = 0
-}
-
 variable "aws_region" {
-  type        = string
+  type = string
   description = "AWS region"
 }
