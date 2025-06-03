@@ -13,7 +13,7 @@
 
 ## :sunglasses: Creation of Resources :running:
 
-### **_VPC only_**
+### **_VPC only (Step 1)_**
 
 `cd vpc_only_nongw` <br>
 `terraform init` <br>
@@ -50,6 +50,7 @@ Input `false` for creation of Nat Gateway resource <br>
 `terraform init` <br>
 `terraform plan -var-file="ndev.tfvars" ` <br>
 `terraform apply -var-file="ndev.tfvars"` <br>
+`terraform destroy -var-file="ndev.tfvars" `<br>
 
 ### **_AWS SNS Topic_**
 
@@ -57,6 +58,7 @@ Input `false` for creation of Nat Gateway resource <br>
 `terraform init` <br>
 `terraform plan -var-file="ndev.tfvars" ` <br>
 `terraform apply -var-file="ndev.tfvars"` <br>
+`terraform destroy -var-file="ndev.tfvars" `<br>
 
 ### **_DynamoDB table with sample data_**
 
@@ -64,3 +66,23 @@ Input `false` for creation of Nat Gateway resource <br>
 `terraform init` <br>
 `terraform plan -var-file="ndev.tfvars" ` <br>
 `terraform apply -var-file="ndev.tfvars"` <br>
+`terraform destroy -var-file="ndev.tfvars" `<br>
+
+### **_MySQL accessible from private subnet only_**
+
+Do step 1. <br>
+
+`cd ../mySQL` <br>
+`terraform init` <br>
+`terraform plan -var-file="ndev.tfvars" ` <br>
+`terraform apply -var-file="ndev.tfvars"` <br>
+`terraform destroy -var-file="ndev.tfvars" `<br>
+
+... <br>
+
+`terraform destroy -var-file="ndev.tfvars" `<br>
+
+Input `false` for creation of Nat Gateway resource <br>
+
+`cd ../vpc_only_nongw` <br>
+`terraform destroy -var-file="ndev.tfvars" `<br>
