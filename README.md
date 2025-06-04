@@ -131,3 +131,13 @@ Input `false` for creation of Nat Gateway resource <br>
 `terraform destroy -var-file="ndev.tfvars" `<br>
 
 To test, run ec2 instance from vpc2 which dynamically assign role if policy exist. <br>
+
+### **_EBS volume_**
+
+`cd ../ebs` <br>
+`terraform init` <br>
+`terraform plan -var-file="ndev.tfvars" ` <br>
+`terraform apply -var-file="ndev.tfvars"` <br>
+`terraform destroy -var-file="ndev.tfvars" `<br>
+
+To test, re-apply terraform for ec2 instance from vpc1. <br>
