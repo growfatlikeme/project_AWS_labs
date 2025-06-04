@@ -9,6 +9,9 @@ resource "aws_instance" "bastion" {
   
   key_name               = aws_key_pair.bastion_key.key_name
 
+  # Use the IAM instance profile from the remote state where applicable
+  iam_instance_profile = try(data.terraform_remote_state.iam.outputs.instance_profile_name, null)
+
   user_data = base64encode(templatefile("init-script.tpl", {
     name_prefix = local.name_prefix
   }))

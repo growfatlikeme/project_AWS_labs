@@ -8,6 +8,15 @@ data "terraform_remote_state" "vpc" {
   }
 }
 
+data "terraform_remote_state" "ebs" {
+  backend = "s3"
+  config = {
+    bucket = "eetse-terraform-state"
+    key    = "eetse-ebs.tfstate" 
+    region = "ap-southeast-1" 
+  }
+}
+
 #query to read latest Amazon Linux 2023 AMI
 data "aws_ami" "amazon2023" {
   most_recent = true

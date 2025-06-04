@@ -9,10 +9,23 @@ resource "aws_instance" "bastion" {
   
   key_name               = aws_key_pair.bastion_key.key_name
 
-   user_data = base64encode(templatefile("init-script.tpl", {
-    name_prefix = local.name_prefix
-  }))
-    
+  user_data = <<-EOF
+            #!/bin/bash
+            echo "export AWS_DEFAULT_REGION=${var.aws_region}" >> /etc/profile
+            mkdir -p /home/ec2-user/.aws
+            echo "[default]" > /home/ec2-user/.aws/config
+            echo "region = ${var.aws_region}" >> /home/ec2-user/.aws/config
+            chown -R ec2-user:ec2-user /home/ec2-user/.aws
+            while [ ! -e /dev/xvdf ]; do
+              echo "Waiting for EBS volume to be attached..."
+              sleep 10
+            done
+
+            sudo mkfs -t ext4 /dev/xvdf
+            sudo mkdir /mydata
+            sudo mount /dev/xvdf /mydata/
+            EOF
+
   user_data_replace_on_change = true # this forces instance to be recreated upon update of user data contents
 
   tags = {

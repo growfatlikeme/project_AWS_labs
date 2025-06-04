@@ -5,6 +5,17 @@ data "terraform_remote_state" "vpc" {
     bucket = "eetse-terraform-state"
     key    = "eetse-vpc2.tfstate"
     region = "ap-southeast-1"
+
+  }
+}
+
+data "terraform_remote_state" "iam" {
+  backend = "s3"
+  config = {
+    bucket = "eetse-terraform-state"
+    key    = "eetse-iamrole.tfstate"
+    region = "ap-southeast-1"
+
   }
 }
 

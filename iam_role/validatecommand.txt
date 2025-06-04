@@ -1,0 +1,13 @@
+***************************************************************************************************************************
+Run these command to test for IAM role profile attachement to EC2 instance created in ec2_bastion_withVPC_vpc2 module
+***************************************************************************************************************************
+
+aws ec2 describe-instances
+
+aws s3 ls
+
+aws s3api create-bucket \
+   --bucket sampleiamlabbucket \
+   --region ap-southeast-1 \
+   --create-bucket-configuration LocationConstraint=ap-southeast-1
+
